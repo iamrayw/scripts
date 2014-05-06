@@ -3,6 +3,7 @@
 #to use replace 1foonumber & afoonumber12 with variables you want to hash and adjusted line variable #
 
 import os
+import re
 #import tarfile
 
 
@@ -11,12 +12,8 @@ def replaceCC(logFile):
     with open(logFile) as f:
         fixedLog = ""
         for line in f:
-            index = line.rfind("1foonumber=")
-            if index > 1:
-                fixedLog += line[:index+15] + "########" + line[index+23:]
-            else:
-                fixedLog += line
- 
+            fixedLog += re.sub(r'(\d{5})\d{8}(\d{3})', r'\1########\2', line)
+
     with open(logFile, "w") as f:
         f.write(fixedLog)
 
