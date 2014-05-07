@@ -7,7 +7,7 @@
 #   2. Go to http://www.ipinfodb.com/ip_location_api.php and get your own API key
 #   3. Update the config with your API key:
 #   4. Run the script:
-#   $ python ip_lookup.py
+#   $ python geo-lookup.py
 batch_filename = "batch.csv"
 key = "9180559212c309581050c846fe426c41e48cfd67c4fb8fd3f00a79b37cf6b524"
 
