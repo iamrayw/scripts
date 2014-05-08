@@ -8,7 +8,7 @@
 #   3. Update the config with your API key:
 #   4. Run the script:
 #   $ python geo-lookup.py
-batch_filename = "batch.csv"
+batch_filename = "c:/a/a.csv"
 key = "9180559212c309581050c846fe426c41e48cfd67c4fb8fd3f00a79b37cf6b524"
 
 import xml.etree.ElementTree as ET
@@ -21,40 +21,44 @@ import os
 def get_batch(batch_filename):
     "Creates list containing all the IP addresses from your batch file"
     batch = csv.reader(open(batch_filename))#, delimiter=',')
-    return [[ip_addr] for ip_addr in batch]
+    return [ip_addr for ip_addr in batch]
 
 
 def batch_process(batch):
     "Runs csv file through the IPInfoDB API"
     try:
         i = 0
-        output = open('output.txt', 'a')
-        for ip_addr in batch:
-            response = urllib.urlopen(url + "&ip=" + str(ip_addr)).read()
-            tree = ET.fromstring(response)
+        with open('output.csv', 'a') as f:
+            output = csv.writer(f)
+            for ipList in batch:
+                for ip_addr in ipList:
+                    print str(ip_addr)
+                    response = urllib.urlopen(url + "&ip=" + str(ip_addr)).read()
+                    tree = ET.fromstring(response)
 
-            output.write(",")
-            for child in tree:
-                if child.tag == 'ipAddress':
-                    output.write(str(child.text) + ",")
-                if child.tag == 'countryCode':
-                    output.write(str(child.text) + ",")
-                if child.tag == 'timeZone':
-                    output.write(str(child.text) + "\n")
-            i += 1
-            print "\t" + str(i) + " of " + str(len(batch)) + ":\t"
-        output.close()
-        os.rename('output.txt', 'output.csv')
+                    outputToFile = []
+                    for child in tree:
+                        if child.tag == 'ipAddress':
+                            outputToFile.append(str(child.text))
+                        if child.tag == 'countryCode':
+                            outputToFile.append(str(child.text))
+                        if child.tag == 'timeZone':
+                            outputToFile.append(str(child.text))
+                    output.writerow(outputToFile)
+                    i += 1
+                    print "\t" + str(i) + " of " + str(len(batch)) + ":\t"
+
+#        os.rename('output.txt', 'output.csv')
         print "Complete."
     except KeyboardInterrupt:
-        output.close()
         print "\nExiting..."
+        exit()
 
-base_url = "http://api.ipinfodb.com/v3/ip-city/?format=xml&key="
-url = base_url + key
-current_batch = get_batch(batch_filename)
 
-print "Added " + str(len(current_batch)) + " entries from " + str(batch_filename) + "\n"
-print "Working... This may take a while, please be patient.\n"
-
-batch_process(current_batch)
+if __name__ == "__main__":
+    base_url = "http://api.ipinfodb.com/v3/ip-city/?format=xml&key="
+    url = base_url + key
+    current_batch = get_batch(batch_filename)
+    print "Added " + str(len(current_batch)) + " entries from " + str(batch_filename) + "\n"
+    print "Working... This may take a while, please be patient.\n"
+    batch_process(current_batch)
