@@ -1,14 +1,13 @@
 # geo-lookup.py by iamrayw
 # process csv by geo location
 #
-#   1. Save your user email and IP addresses in a .csv file
-#        -  Each email and IP should be in its own column in Excel (or separated by commas)
-#        -  Enter the name of your .csv file:
-#   2. Go to http://www.ipinfodb.com/ip_location_api.php and get your own API key
-#   3. Update the config with your API key:
-#   4. Run the script:
+#   1. Save your IP addresses in a .csv file
+#        -  name csv file "batch.csv"
+#   2. Go to http://www.ipinfodb.com/ip_location_api.php and receieve your own API key
+#   3. Update the config with your API key
+#   4. Run the script
 #   $ python geo-lookup.py
-batch_filename = "c:/a/a.csv"
+batch_filename = "batch.csv"
 key = "9180559212c309581050c846fe426c41e48cfd67c4fb8fd3f00a79b37cf6b524"
 
 import xml.etree.ElementTree as ET
