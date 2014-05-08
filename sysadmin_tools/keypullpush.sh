@@ -1,5 +1,5 @@
 #confirm keygen.sh is in same directory as keypullpush.sh
-echo "This Script will pull key from Bastion Server and apply authorized Keys to local machine."
+echo "This Script will pull key from Server and apply authorized Keys to local machine."
 
 #copies authorized keys to local machine
 scp -i $HOME/.ssh/sshkey.pem user@192.168.1.2:.ssh/authorized_keys ~/.ssh
