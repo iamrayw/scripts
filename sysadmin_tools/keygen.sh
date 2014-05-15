@@ -1,5 +1,4 @@
-	#!/bin/bash 
-#test
+#!/bin/bash 
 echo "This script is to be used for generating SSH certificates only."
 
 read -p "Bits (default: 8192): " bits
