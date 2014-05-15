@@ -1,4 +1,5 @@
 #cc_scrub v2.4
+# cc_scrubV2.4.py by iamrayw
 #runs aginst directory for 1foonumber hashes out lines 15-23 & 27-30 / afoonumber12 hashes out lines 17-25 & 29-32
 #to use replace 1foonumber & afoonumber12 with variables you want to hash and adjusted line variable #
 
