@@ -7,6 +7,6 @@ if [ "$1" = ""]
 	then echo "Must run script with date and file name"
 		date=$1
 		logfile=$2
-	find /some/directory/all.$date.tar.gz  -type f -name "*.tar.gz" -printf [%f]\\n -exec tar -ztvf {} \; | grep -iE "[\[]|*$logfile.log"
+	find /some/directory/$date.tar.gz  -type f -name "*.tar.gz" -printf [%f]\\n -exec tar -ztvf {} \; | grep -iE "[\[]|*$logfile"
 fi
 exit
