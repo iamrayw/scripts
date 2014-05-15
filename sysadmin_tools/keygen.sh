@@ -1,4 +1,5 @@
 #!/bin/bash 
+# keygen.sh by iamrayw
 echo "This script is to be used for generating SSH certificates only."
 
 read -p "Bits (default: 8192): " bits
