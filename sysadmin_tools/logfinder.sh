@@ -1,4 +1,5 @@
 #!/bin/bash
+# logfinder.sh by iamrayw
 #This script should be run with a parameter (the tar file you want to find)
 # example
 # $ bash ./locate.sh somedate somefile
