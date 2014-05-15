@@ -1,3 +1,5 @@
+#!/bin/bash
+# keypullpush.sh by iamrayw
 #confirm keygen.sh is in same directory as keypullpush.sh
 echo "This Script will pull key from Server and apply authorized Keys to local machine."
 
