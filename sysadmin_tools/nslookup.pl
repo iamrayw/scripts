@@ -1,4 +1,6 @@
 #!/usr/bin/perl
+#nslookup.pl by iamrayw
+#create lists.hosts file in running directory. IPs need to be return carriage delimated.
 
 open (HOSTLIST,"lists.hosts");
 @hosts = <HOSTLIST>;
